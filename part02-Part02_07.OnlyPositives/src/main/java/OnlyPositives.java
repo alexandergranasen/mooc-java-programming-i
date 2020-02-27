@@ -18,9 +18,7 @@ public class OnlyPositives {
                 break;
             }
             
-            if (number > 0) {
-                System.out.println(number*number);
-            }
+            System.out.println(number*number);
         }
     }
 }
