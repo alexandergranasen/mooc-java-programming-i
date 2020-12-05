@@ -1,13 +1,12 @@
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PersonalDetails {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int sum = 0, count = 0, helperLength = 0, nameLength;
-        String helperName = "";
+        int sum = 0, count = 0, helperLength = 0;
+        String longestName = "";
         while (true) {
             String text = scanner.nextLine();
 
@@ -18,14 +17,12 @@ public class PersonalDetails {
             String[] pieces = text.split(",");
             sum += Integer.valueOf(pieces[1]);
             count++;
-            nameLength = pieces[0].length();
-            if (helperLength < nameLength) {
-                helperLength = nameLength;
-                helperName = pieces[0];
+            if (helperLength < pieces[0].length()) {
+                helperLength = pieces[0].length();
+                longestName = pieces[0];
             }
-
         }
-        System.out.println("Longest name: " + helperName);
+        System.out.println("Longest name: " + longestName);
         System.out.println("Average of the birth years: "+1.0*sum/count);
 
     }
