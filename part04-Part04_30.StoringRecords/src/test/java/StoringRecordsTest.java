@@ -3,7 +3,6 @@ import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
@@ -20,16 +19,16 @@ public class StoringRecordsTest {
     public MockStdio io = new MockStdio();
 
     @Test
-    public void test1() throws IOException {
+    public void test1() {
         test("tiedosto1.txt", "saul,32", "tina,30", "aaron,1", "matt,44", "lena,0");
     }
 
     @Test
-    public void test2() throws IOException {
+    public void test2() {
         test("tiedosto2.txt", "saul,41", "tina,9", "matt,13", "anton,42", "amy,0", "lily,13", "lena,41");
     }
 
-    private void test(String fileName, String... data) throws IOException {
+    private void test(String fileName, String... data) {
         deleteAndCreateNew(fileName, data);
         
         List<Person> expected = Arrays.stream(data).map(line -> line.split(",")).map(arr -> new Person(arr[0], Integer.valueOf(arr[1]))).collect(Collectors.toList());

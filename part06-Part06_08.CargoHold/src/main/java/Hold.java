@@ -13,20 +13,40 @@ import java.util.ArrayList;
  */
 public class Hold
 {
-    private ArrayList<Suitcase> suitcases;
+    private ArrayList<Suitcase> suitcaseHold;
     private int maxWeight;
     
     public Hold(int maxWeight)
     {
-        suitcases = new ArrayList<Suitcase>();
+        suitcaseHold = new ArrayList<Suitcase>();
         this.maxWeight = maxWeight;
     }
     
+    /**
+     * Method that adds a suitcase to hold if it's not larger than the
+     * maxweight of the suitcaseHold.
+     * 
+     * @param suitcase Takes a suitcase as a parameter
+     */
     public void addSuitcase(Suitcase suitcase)
     {
-        if(suitcase.totalWeight() <= this.maxWeight)
+        int suitcasesWeight = 0;
+                
+        for(Suitcase e : this.suitcaseHold)
         {
-            this.suitcases.add(suitcase);
+            suitcasesWeight += e.totalWeight(); 
+        }
+        if(this.maxWeight - suitcasesWeight >= suitcase.totalWeight())
+        {
+            this.suitcaseHold.add(suitcase);
+        }
+    }
+    
+    public void printItems()
+    {
+        for(Suitcase suitcase : suitcaseHold)
+        {
+            suitcase.printItems();
         }
     }
     
@@ -34,10 +54,10 @@ public class Hold
     public String toString()
     {
         int totalWeight = 0;
-        for(Suitcase suitcase : suitcases)
+        for(Suitcase suitcase : suitcaseHold)
         {
             totalWeight += suitcase.totalWeight();
         }
-        return this.suitcases.size() + " suitcases " +"("+totalWeight+" kg)";
+        return this.suitcaseHold.size() + " suitcases " +"("+totalWeight+" kg)";
     }
 }

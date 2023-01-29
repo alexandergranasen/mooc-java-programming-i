@@ -59,7 +59,7 @@ public class Part3Test {
 
         Matcher matcher = Pattern.compile(patternStr).matcher(inputStr);
 
-        assertTrue("The output should contain a line of the type \Numbers: 3\", matcher.find());
+        assertTrue("The output should contain a line of the type \"Numbers: 3\"", matcher.find());
 
         int number = Integer.valueOf(matcher.group(1));
         return number;

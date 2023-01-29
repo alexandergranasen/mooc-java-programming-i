@@ -57,7 +57,14 @@ public class Suitcase
     
     public Item heaviestItem()
     {
-        Item heaviestItem = items.get(0);
+        Item heaviestItem;
+        
+        if(items.isEmpty())
+        {
+            return null;
+        }            
+        
+        heaviestItem = items.get(0);
         
         for(Item item : items)
         {
@@ -66,6 +73,7 @@ public class Suitcase
                 heaviestItem = item;
             }
         }
+        
         return heaviestItem;
     }
     
