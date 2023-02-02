@@ -21,14 +21,14 @@ import static org.junit.Assert.*;
  */
 
 public class ExerciseManagementTest {
-    
+
     private ExerciseManagement management;
     
     @Before
     public void initialize()
     {
         management = new ExerciseManagement();
-    }
+}
     
     @Test
     public void exerciseListEmptyAtBeginning() 

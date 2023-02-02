@@ -3,7 +3,6 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-import sun.awt.X11.XConstants;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
