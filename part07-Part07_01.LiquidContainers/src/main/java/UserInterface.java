@@ -24,32 +24,84 @@ public class UserInterface
     
     public void start() 
     {
+        this.containerRegistry.printContainers();
         while (true) 
         {
             System.out.print("> ");
 
+            String command = "";
+            String stringAmount = "";
+            int integerAmount = 0;
+            
             String input = scanner.nextLine();
-            if (input.equals("quit")) {
+            String[] parts = new String[2];
+            
+            if(input.contains(" "))
+            {
+                parts = input.split(" ");
+                command = parts[0];
+                stringAmount = parts[1];
+                integerAmount = convertToInt(stringAmount);
+            } else 
+            {
+                command = input;
+            }           
+
+            if(command.equals("quit")) {
                 break;
             }
-            else if(input.equals("add")) 
+            else if(command.equals("add")) 
             {
-                addContainers();
+                addAmount(integerAmount);
             }
-            else if(input.equals("show")) 
+            else if(command.equals("move"))
             {
-                containerRegistry.printContainers();
+                moveAmount(integerAmount);
             }
+            else if(command.equals("remove"))
+            {
+                removeAmount(integerAmount);
+            }
+            containerRegistry.printContainers();
         }
     }
     
-    public void addContainers()
+    public void addAmount(int amount)
     {
-        Container firstContainer = new Container("First");
-        Container secondContainer = new Container("Second");
-        containerRegistry.addContainer(firstContainer);
-        containerRegistry.addContainer(secondContainer);
+        
+        this.containerRegistry.getFirstContainer().add(amount);            
     }
-
-
+    
+    public void moveAmount(int amount)
+    {
+        if(this.containerRegistry.getFirstContainer().showAmount() >= amount)
+        {
+            this.containerRegistry.getSecondContainer().add(amount);
+            this.containerRegistry.getFirstContainer().remove(amount);
+        }
+        else if(amount > this.containerRegistry.getFirstContainer().showAmount())
+        {
+            this.containerRegistry.getSecondContainer().add(this.containerRegistry.getFirstContainer().showAmount());
+            this.containerRegistry.getFirstContainer().remove(amount);
+        }
+    }
+    
+    public void removeAmount(int amount)
+    {
+        this.containerRegistry.getSecondContainer().remove(amount);
+    }   
+     
+    public int convertToInt(String input)
+    {
+        try
+        {
+            int number = Integer.parseInt(input);
+            return number;
+        } catch(Exception e)
+        {
+            System.out.println("You need to input a number after add (example: add 150) " + e.getMessage());
+        }
+        return 0;
+    }
 }
+

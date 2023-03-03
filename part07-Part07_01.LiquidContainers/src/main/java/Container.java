@@ -31,25 +31,43 @@ public class Container
     {
         return this.amount;
     }
+    
+    public void setAmount(int amount)
+    {
+        this.amount = amount;
+    }
+    
+    public int getMaxAmount()
+    {
+        return this.maxAmount;
+    }
    
     
     public void add(int amount)
     {
-        this.amount += amount;
-    }
-    
-    public void move(int amount, Container container)
-    {
-        if(amount > this.showAmount())
+        if(amount > 0)
         {
-            this.remove(amount);
-            container.add(amount);
+            if(this.amount + amount <= 100)
+            {
+                this.amount += amount;
+            } 
+            else 
+            {
+                this.amount = 100;
+            }
         }
     }
     
     public void remove(int amount)
     {
-        this.amount -= amount;
+        if(this.amount - amount >= 0)
+        {
+            this.amount -= amount;
+        }
+        else 
+        {
+            this.amount = 0;
+        }
     }
     
     @Override

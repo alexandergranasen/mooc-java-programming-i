@@ -18,18 +18,37 @@ public class ContainerRegistry
     public ContainerRegistry()
     {
         containerRegistry = new ArrayList<Container>();
+        this.addContainers();
+    }
+
+    public void addContainers()
+    {
+        Container firstContainer = new Container("First");
+        Container secondContainer = new Container("Second");
+        this.containerRegistry.add(firstContainer);
+        this.containerRegistry.add(secondContainer);
     }
     
-    public void addContainer(Container container)
+    public void addAmount(int amount)
     {
-        this.containerRegistry.add(container);
+        this.containerRegistry.get(0).add(amount);
+    }
+    
+    public Container getFirstContainer()
+    {
+        return this.containerRegistry.get(0);
+    }
+    
+    public Container getSecondContainer()
+    {
+        return this.containerRegistry.get(1);
     }
     
     public void printContainers()
     {
         for(Container container : containerRegistry)
         {
-            System.out.println(container.toString());
+            System.out.println(container.toString());    
         }
     }
 }
