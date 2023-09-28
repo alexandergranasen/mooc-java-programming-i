@@ -1,6 +1,8 @@
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 
 
@@ -8,13 +10,32 @@ public class Main {
 
     public static void main(String[] args) {
         // insert test code here
-        int[] numbers = {3, 1, 5, 99, 3, 12};
+        int[] numbers = {2,1,3,0};
+        String[] stringArray = {"Kalle", "Tjatte", "Fnatte"};
+        
+        ArrayList<Integer> integerArrayList = new ArrayList<Integer>();
+        integerArrayList.add(5);
+        integerArrayList.add(2);
+        integerArrayList.add(0);
+        integerArrayList.add(3);
+        
+        ArrayList<String> stringArrayList = new ArrayList<String>();
+        stringArrayList.add("Kalle");
+        stringArrayList.add("Fnatte");
+        stringArrayList.add("Tjatte");
+        
+        sort(numbers);        
+        sort(stringArray);
+        sortIntegers(integerArrayList);
+        sortStrings(stringArrayList);
+        
         
         System.out.println(Arrays.toString(numbers));
+        System.out.println(Arrays.toString(stringArray));
+        System.out.println(integerArrayList);
+        System.out.println(stringArrayList);
         
-        Main.sort(numbers);        
         
-        System.out.println(Arrays.toString(numbers));
     }
     
     /**
@@ -24,34 +45,34 @@ public class Main {
      */
     public static void sort(int[] numbers)
     {
-        // Iterate trough numbers array
-        for (int i = 0; i < numbers.length-1; i++)
-        {
-            // Find the minimum number in unsorted array
-            int min_idx = i;
-            for (int j = i+1; j < numbers.length-1; j++){
-                if (numbers[j] < numbers[min_idx])
-                    min_idx = j;
-            }
- 
-            // Swap the found minimum element with the first element
-            int temp = numbers[min_idx];
-            numbers[min_idx] = numbers[i];
-            numbers[i] = temp;
-        }
-
+        Arrays.sort(numbers);
     }
-          
-    public static void swap(int[] numbers, int index1, int index2)
-    {
-        int n1 = numbers[index1];
-        int n2 = numbers[index2];
-        
-        numbers[index1] = n2;
-        numbers[index2] = n1;
-    } 
     
-
+    /**
+     * A method that sorts an array of strings.
+     * @param strings 
+     */
+    public static void sort(String[] stringArray) 
+    {
+        Arrays.sort(stringArray);
+    }
+    
+    /**
+     * A method that sorts an arraylist of integers.
+     * @param integers 
+     */
+    public static void sortIntegers(ArrayList<Integer> integerArrayList)
+    {
+        Collections.sort(integerArrayList);
+    }
+    
+    /**
+     * A method that sorts an arraylist of strings
+     */
+    public static void sortStrings(ArrayList<String> stringArrayList)
+    {
+        Collections.sort(stringArrayList);
+    }
 }
 
 
