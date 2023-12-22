@@ -1,5 +1,3 @@
-
-import java.util.Scanner;
 /*
  * Copyright (C) 2023 Alexander Granåsen at https://github.com/alexandergranasen
  *
@@ -21,16 +19,27 @@ import java.util.Scanner;
  *
  * @author Alexander Granåsen at https://github.com/alexandergranasen
  */
-public class mainProgram {
-
-    public static void main(String[] args) {
-        // NB! Do not create other scanner objects than the one below
-        // if and when you create other classes, pass the scanner to them
-        // as a parameter
-
-        Scanner scan = new Scanner(System.in);
-        TextInterface text = new TextInterface(scan);
-        text.start();
+public class Bird {
+    private String birdName;
+    private String birdLatinName;
+    private int observations;
+    
+    public Bird(String birdName, String birdLatinName) {
+        this.birdName = birdName;
+        this.birdLatinName = birdLatinName;
+        this.observations = 0;
     }
-
+    
+    public String getName() {
+        return this.birdName;
+    }
+    
+    public void addObservation(){
+        this.observations++;
+    }
+    
+    @Override
+    public String toString() {
+        return this.birdName+" ("+this.birdLatinName+"): " +this.observations;
+    } 
 }
